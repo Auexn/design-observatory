@@ -5,8 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#f6f5f0" />
-  <meta name="description" content="设计观察室 V10：一本可以互动的设计杂志。阅读视觉秩序、文字、色彩、留白与日常设计案例，体验六张共享元素灵感卡片。" />
+  <meta name="description" content="一个融合滚动叙事与动态交互的设计展示网页。九个章节，从秩序、文字、色彩、留白到日常设计案例，可拖动、可重塑、可亲手实验。" />
   <title>设计观察室 · V17.18 终版 · 动态艺术创作台</title>
+  <link rel="canonical" href="https://auexn.github.io/design-observatory/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='9'%20fill='%231c201d'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='7.5'%20fill='%23ff681f'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="设计观察室" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="设计观察室 · V17.18 终版 · 动态艺术创作台" />
+  <meta property="og:description" content="一个融合滚动叙事与动态交互的设计展示网页。九个章节，从秩序、文字、色彩、留白到日常设计案例，可拖动、可重塑、可亲手实验。" />
+  <meta property="og:url" content="https://auexn.github.io/design-observatory/" />
+  <meta property="og:image" content="https://auexn.github.io/design-observatory/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="深紫色渐变的首屏，主标题 See the Unseen. 其中 Unseen 为橙色斜体。" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="设计观察室 · V17.18 终版 · 动态艺术创作台" />
+  <meta name="twitter:description" content="一个融合滚动叙事与动态交互的设计展示网页。九个章节，从秩序、文字、色彩、留白到日常设计案例，可拖动、可重塑、可亲手实验。" />
+  <meta name="twitter:image" content="https://auexn.github.io/design-observatory/og-image.jpg" />
   <style id="observatory-styles">
   :root {
     --paper:#f6f5f0; --ink:#1c201d; --muted:#686d67; --line:#dcded7;
@@ -654,6 +670,29 @@ body{background:#f6f5f0}
 .hero-description{animation:v7HeroKicker .8s .45s both var(--v7-ease)}
 .hero-actions{animation:v7HeroKicker .8s .58s both var(--v7-ease)}
 @keyframes v7HeroKicker{from{opacity:.4;transform:translate3d(0,20px,0)}to{opacity:1;transform:none}}
+/* V18 hero entrance: staged in reading order, opacity + transform only */
+#top.molten-home .hero-left>.issue{animation:obsEnter .72s .06s both var(--ease)}
+#top.molten-home .hero-left>.kicker{animation:obsEnter .72s .13s both var(--ease)}
+#top.molten-home .hero-left>.big-title{animation:obsTitle .86s .2s both var(--ease)}
+#top.molten-home .hero-left>.cn{animation:obsEnter .72s .34s both var(--ease)}
+#top.molten-home .hero-left>p{animation:obsEnter .72s .41s both var(--ease)}
+#top.molten-home .hero-left>.hero-actions{animation:obsEnter .72s .48s both var(--ease)}
+#top.molten-home .sculpture-area{animation:obsStage .9s .18s both var(--ease)}
+#top.molten-home .right-info{animation:obsEnter .72s .56s both var(--ease)}
+#top.molten-home .bottom-rail{animation:obsRail .7s .66s both var(--ease)}
+@keyframes obsEnter{from{opacity:0;transform:translate3d(0,22px,0)}to{opacity:1;transform:none}}
+@keyframes obsTitle{from{opacity:0;transform:translate3d(0,30px,0)}to{opacity:1;transform:none}}
+@keyframes obsStage{from{opacity:0;transform:translate3d(0,16px,0) scale(.96)}to{opacity:1;transform:none}}
+@keyframes obsRail{from{opacity:0;transform:translate3d(0,10px,0)}to{opacity:1;transform:none}}
+/* V18 section titles: the heading lands first, its copy follows */
+[data-reveal]:has(.section-title){opacity:1!important;transform:none!important;transition:none!important}
+[data-reveal]:has(.section-title)>*{opacity:0;transform:translate3d(0,16px,0);transition:opacity .6s var(--ease) .1s,transform .72s var(--ease) .1s}
+[data-reveal]:has(.section-title)>.section-title{transform:translate3d(0,26px,0);transition:opacity .62s var(--ease),transform .8s var(--ease)}
+[data-reveal]:has(.section-title).visible>*{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  #top.molten-home .hero-left>*,#top.molten-home .sculpture-area,#top.molten-home .right-info,#top.molten-home .bottom-rail{animation:none!important;opacity:1!important;transform:none!important}
+  [data-reveal]:has(.section-title)>*{opacity:1!important;transform:none!important;transition:none!important}
+}
 .hero .line{contain:paint}
 .hero h1 .line span{animation:v7Title .92s var(--v7-spring) both}
 .hero h1 .line:nth-child(2) span{animation-delay:.13s}
@@ -3590,8 +3629,13 @@ html[data-motion="off"] #archive-dialog #detail-art[data-auto-arrive="true"] .gr
 html[data-motion="off"] #archive-dialog .shared-panel,
 html[data-motion="off"] #archive-dialog .shared-art{display:none!important}
 </style>
+<style id="a11y-skip-link">
+.skip-link{position:fixed;top:-120px;left:16px;z-index:9999;padding:12px 22px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:14px;font-weight:600;text-decoration:none;transition:top .18s var(--ease)}
+.skip-link:focus,.skip-link:focus-visible{top:16px}
+</style>
 </head>
 <body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
   <div id="progress" aria-hidden="true"></div>
   <header class="nav">
     <div class="shell nav-inner">
@@ -3629,7 +3673,7 @@ html[data-motion="off"] #archive-dialog .shared-art{display:none!important}
   </div>
   <div class="mini-toast" id="mini-toast" role="status" aria-live="polite"></div>
 
-  <main>
+  <main id="main">
     <section class="hero molten-home" aria-labelledby="hero-main-title" id="top" data-section>
   <span class="corner-index mono">EXP.001 / TYPOGRAPHY AS MATTER</span>
   <div class="hero-inner">
