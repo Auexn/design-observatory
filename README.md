@@ -4,13 +4,21 @@
 
 **在线体验 → https://auexn.github.io/design-observatory/**
 
-![设计观察室首屏](og-image.jpg)
+![设计观察室首屏](screenshots/01-hero.jpg)
 
 ## 这是什么
 
 不是教程，更像一间可以走进去的展厅。沿着九个章节往下读，可以滚动、点击、拖动，也可以在一张空白画布上把字重新捏一遍——熔铸、切片，或者干脆让它失序。
 
 关于观察、秩序、文字、色彩与留白，以及一张海报到底是怎么长出来的。
+
+## 预览
+
+| | |
+|---|---|
+| ![滚动叙事](screenshots/02-story.jpg)<br>滚动叙事 · 从观察开始 | ![文字](screenshots/03-typography.jpg)<br>文字 · 也有自己的表情 |
+| ![色彩](screenshots/04-color.jpg)<br>色彩 · 是视觉的第一声问候 | ![创意实验台](screenshots/05-playground.jpg)<br>创意实验台 · 亲手试试 |
+| ![设计宣言](screenshots/06-manifesto.jpg)<br>设计宣言 · 没有标准答案 | |
 
 ## 章节
 
